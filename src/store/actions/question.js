@@ -25,11 +25,9 @@ export const sendRatingFail = (error) => {
     }
 }
 
-export const setRatingValue = (question,field,value) => {
-    console.log(question,field,value)
+export const setRatingValue = (field,value) => {
     return {
         type: actionTypes.SET_RATING_VALUE,
-        question: question,
         field: field,
         value:value
     }
@@ -38,10 +36,10 @@ export const setRatingValue = (question,field,value) => {
 
 
 //async action creators
-export const sendRating = (ratings) => {
+export const sendRating = (rating) => {
     return dispatch => {
         dispatch(sendRatingStart())
-        Firebase.sendRating(ratings)
+        Firebase.sendRating(rating)
         .then(res => dispatch(sendRatingSuccess(res)))
         .catch(err => dispatch(sendRatingFail(err)))
     }

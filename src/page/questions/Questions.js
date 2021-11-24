@@ -17,24 +17,16 @@ class Questions extends Component {
     }
 
     componentDidMount = () => {
-        this.setState({questions: objectArrayConverter(this.props.questions.questions)})
+        
     }
 
     onRatingChange = (question,rating) => {
-        console.log(this.state.questions)
-        this.props.onSetRating(this.state.questions, question, rating)        
-        this.setState({questions: objectArrayConverter(this.props.questions.questions)})
-        this.setState({value: rating})
-        console.log(this.state.questions)
+        this.props.onSetRating(question, rating)        
     }
 
     sendRating = () => {
-        let endVoting = []
-        this.state.questions.map(question => {
-            endVoting.push({question: question.key, rating: question.value})
-        })
-
-        this.props.onSetQuestionRating(endVoting)
+        
+        this.props.onSetQuestionRating(this.props.questions.questions)
     }
 
    
@@ -49,13 +41,13 @@ class Questions extends Component {
                             return(
                             <div className={classes.ratingBox}>
                                 <RatingBox
+                                key={el.key}
                                 starAmount={el.amoutOfStars}
                                 label={el.question}
-                                onRatingChanged={(value) => this.onRatingChange(index,value)}
+                                onRatingChanged={(value) => this.onRatingChange(el.key,value)}
                                 value={el.value}
                                 ratingKey={el.key}
-                                questions={this.state.questions}
-                                wordingKey={index}
+                                wording={el.wording}
                                 >
                                 
                                 </RatingBox>
@@ -72,8 +64,8 @@ class Questions extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSetQuestionRating: (field,value) => dispatch(actions.sendRating(field,value)),
-        onSetRating: (question,field,value) => dispatch(actions.setRatingValue(question,field,value))
+        onSetQuestionRating: (rating) => dispatch(actions.sendRating(rating)),
+        onSetRating: (field,value) => dispatch(actions.setRatingValue(field,value))
     }
 }
 const mapStateToProps = state => {

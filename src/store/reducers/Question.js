@@ -20,7 +20,7 @@ const setVotingValueStart = (state,action) => {
 }
 
 const setVotingValueSuccess = (state,action) => {
-    return updateObject(state, {questions: updateRatingField(state.question,action.field, action.value), loading:false, error: null})
+    return updateObject(state, {loading:false, error: null})
 }
 
 const setVotingValueFail = (state,action) => {
@@ -28,7 +28,10 @@ const setVotingValueFail = (state,action) => {
 }
 
 const setValue = (state,action) => {    
-    return updateObject(state, {questions: updateRatingField(action.question, action.field, action.value), loading:true})
+    //return updateObject(state, {questions: updateRatingField(action.question, action.field, action.value), loading:true})
+    return updateObject(state, {questions: updateObject(state.questions,{[action.field]: updateObject(state.questions[action.field],{
+        value: action.value
+    })})})
 }
 
 const getQuestion = (state, action) => {
@@ -37,7 +40,6 @@ const getQuestion = (state, action) => {
 
 
 const QuestionReducer =  (state = initialState, action) => {
-    console.log(action.types)
     switch (action.type) {
 
         case(actionTypes.UPDATE_RECOMMENDATION_START) : return setVotingValueStart(state,action)
