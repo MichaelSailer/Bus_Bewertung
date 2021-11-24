@@ -2,16 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ReactStars from 'react-stars'
 
-
 import classes from './RatingBox.module.css'
-import { getRatingWording } from '../../shared/utility'
 
 
 const RatingBox = (props) => {
     
- const  getRatingWording = (key,value) => {
-    return props.questions[key]?.wording[value-1]
-}
+    console.log(props)
 
     return (
 
@@ -32,7 +28,7 @@ const RatingBox = (props) => {
                 }
                 
 
-                <p className={classes.RatingWording}>{getRatingWording(props.wordingKey, props.value)}</p>
+                <p className={classes.RatingWording}>{props.wording[props.value-1]}</p>
             </div>
               
           </div>
