@@ -1,0 +1,19 @@
+.SendBtn{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.SendBtn button{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: rgb(14, 97, 175);
+    width: 300px;
+    font-size: 22px;
+    background-color: rgb(14, 97, 175);
+    color: white;
+    
+}

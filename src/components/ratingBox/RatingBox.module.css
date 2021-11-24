@@ -1,0 +1,67 @@
+.RatingBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 0px 15px;
+  margin-bottom: 40px;
+}
+
+.Rating{
+  display: flex;
+  width: 100%;
+}
+.RatingQuestion{
+  width: 70%;
+  text-align: left;
+}
+.Label {
+  margin: 0px;
+}
+
+.RatingStars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px auto;
+  height: 60px;
+}
+
+.Count {
+  height: 100%;
+  display: block;
+}
+
+.RatingWording {
+  color: #c39d50;
+  margin: 0px;
+  font-size: 20px;
+  height: 30px;
+}
+
+
+@media only screen and (max-width: 500px) {
+  .RatingQuestion{
+    width: 20%;
+    text-align: left;
+  }
+  .RatingWording {
+    color: #c39d50;
+    margin: 0px;
+    font-size: 20px;
+    height: 10px;
+  }
+  .RatingStars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+    height: 40px;
+    width: 200px;
+  }
+  .RatingStar{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+}
