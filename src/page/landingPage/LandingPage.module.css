@@ -1,0 +1,14 @@
+.Text{
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.Text h1{
+    padding-top: 100px;
+}
+
+.Text img{
+    width: 70%;
+}

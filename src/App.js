@@ -1,16 +1,22 @@
+import {Switch,Route, BrowserRouter, Redirect, withRouter, Link} from 'react-router-dom'
 import './App.css';
-import Questions from './page/questions/Questions';
+import MainRoutes from './routes/MainRoutes'
 
 function App() {
   
 
   return (
     <div className="App">
+       
         <div className="background">
-        <Questions></Questions>
+
+        <BrowserRouter>
+          <MainRoutes></MainRoutes>
+        </BrowserRouter>
         </div>
     
     </div>
+    
   );
 }
 

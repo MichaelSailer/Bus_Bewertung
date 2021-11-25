@@ -8,16 +8,15 @@ import {getTheQuestion, objectArrayConverter, setValue, updateRatingField} from 
 import classes from './Questions.module.css'
 import SendBtn from '../../components/buttons/sendBtn/SendBtn'
 
+import ThumbFeedback from '../../components/ThumbFeedback/ThumbFeedback';
+
 class Questions extends Component {
 
     state = {
-        value: 0,
-        questions: [],
-        endVoting: [],
+        
     }
 
     componentDidMount = () => {
-        
     }
 
     onRatingChange = (question,rating) => {
@@ -26,9 +25,17 @@ class Questions extends Component {
 
     sendRating = () => {
         
-        this.props.onSetQuestionRating(this.props.questions.questions)
+        this.props.onSetQuestionRating(this.props.questions.questions, this.props.history)
     }
 
+    onPositiveClick = (question) => {
+        this.props.onSetRating(question, true)       
+        
+    }
+ 
+    onNegativeClick = (question) => {       
+        this.props.onSetRating(question, false)  
+    }
    
 
     render(){  
@@ -40,17 +47,28 @@ class Questions extends Component {
                             
                             return(
                             <div className={classes.ratingBox}>
-                                <RatingBox
-                                key={el.key}
-                                starAmount={el.amoutOfStars}
-                                label={el.question}
-                                onRatingChanged={(value) => this.onRatingChange(el.key,value)}
-                                value={el.value}
-                                ratingKey={el.key}
-                                wording={el.wording}
-                                >
+                                {
+                                    el.thumb ? 
+                                    <ThumbFeedback
+                                        label={el.question}
+                                        onPositiveClick={() => this.onPositiveClick(el.key)}
+                                        onNegativeClick={() => this.onNegativeClick(el.key)}
+                                    ></ThumbFeedback>
+                                    :
+                                    
+                                    <RatingBox
+                                        key={el.key}
+                                        starAmount={el.amoutOfStars}
+                                        label={el.question}
+                                        onRatingChanged={(value) => this.onRatingChange(el.key,value)}
+                                        value={el.value}
+                                        ratingKey={el.key}
+                                        wording={el.wording}
+                                        >
+                                        
+                                        </RatingBox>
+                                }
                                 
-                                </RatingBox>
                             </div>)
                         })
                     }
@@ -64,7 +82,7 @@ class Questions extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSetQuestionRating: (rating) => dispatch(actions.sendRating(rating)),
+        onSetQuestionRating: (rating, history) => dispatch(actions.sendRating(rating,history)),
         onSetRating: (field,value) => dispatch(actions.setRatingValue(field,value))
     }
 }
@@ -73,4 +91,4 @@ const mapStateToProps = state => {
         questions: state.questions
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Questions)
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Questions))

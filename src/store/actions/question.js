@@ -36,11 +36,14 @@ export const setRatingValue = (field,value) => {
 
 
 //async action creators
-export const sendRating = (rating) => {
+export const sendRating = (rating, history) => {
     return dispatch => {
         dispatch(sendRatingStart())
         Firebase.sendRating(rating)
-        .then(res => dispatch(sendRatingSuccess(res)))
+        .then(res => {
+            history.push("/ladingPage")
+            dispatch(sendRatingSuccess(res))
+        })
         .catch(err => dispatch(sendRatingFail(err)))
     }
 }

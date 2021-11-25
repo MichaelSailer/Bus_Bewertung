@@ -3,8 +3,8 @@ import * as actionTypes from '../actions/actionTypes'
 
 const initialState = {
     questions : {
-        frage_1: {question:"Sind Sie mit unserem Verkehrsangebot zufrieden?", value:0, wording:["Nein","Ja"],amoutOfStars:2},
-        frage_2: {question:"Ist das Reisegefühl angenehm und fühlen Sie sich sicher? ", value:0, wording:["Nein","Ja"],amoutOfStars:2},
+        frage_1: {question:"Sind Sie mit unserem Verkehrsangebot zufrieden?", value:0, thumb:true, wording:["Nein","Ja"],amoutOfStars:2},
+        frage_2: {question:"Ist das Reisegefühl angenehm und fühlen Sie sich sicher? ", thumb:true, value:0, wording:["Nein","Ja"],amoutOfStars:2},
         frage_3: {question:"Wie gut war der Fahrstil des Fahres?", value:0, wording:["Sehr schlecht", "Schlecht","Befriedigend", "Gut","Sehr gut"],amoutOfStars:5},
         frage_4: {question:"Entspricht die Ausstattung und Sauberkeit des Fahrzeug Ihren Vorstellungen?", value:0, wording:["Sehr schlecht", "Schlecht","Befriedigend", "Gut","Sehr gut"],amoutOfStars:5},
         frage_5: {question:"Wie ist die Sauberkeit des Fahrzeuges?", value:0, wording:["Sehr Schmutzig","Schmutzig", "Normal","Sauber", "Sehr sauber"], amoutOfStars: 5},
